@@ -1,0 +1,23 @@
+package com.likelion.cr_test.post.api.dto.request;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+import java.util.List;
+
+
+public record PostSaveRequestDto(
+        @NotNull(message = "작성자를 필수로 입력해야 합니다.")
+        Long memberId,
+        @NotBlank(message = "제목을 필수로 입력해야 합니다.")
+        @Size(min = 3, max = 20)
+        String title,
+        @NotBlank(message = "내용을 필수로 입력해야 합니다.")
+        @Size(min = 3, max = 20)
+        String contents,
+
+        //태그값 배열로 입력 받는 부분
+        List<String> tags
+) {
+}
